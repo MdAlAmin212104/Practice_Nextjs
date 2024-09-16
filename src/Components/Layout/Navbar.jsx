@@ -1,9 +1,37 @@
+'use client'
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 const Navbar = () => {
+    const pathName = usePathname();
+    const router = useRouter();
+  const links = [
+    {
+      title: "Home",
+      path: "/",
+    },
+    {
+      title: "About",
+      path: "/about",
+    },
+    {
+      title: "Contact",
+      path: "/contact",
+    },
+    {
+      title: "FAQ",
+      path: "/faq",
+    },
+  ];
+
+  const handler = () => {
+    router.push('/contact')
+  } 
+
   return (
-    <div className="navbar bg-base-100 ">
-      <div className="navbar-start container mx-auto">
+    <div className="navbar bg-base-100">
+      <div className="navbar-start ">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -28,49 +56,18 @@ const Navbar = () => {
             <li>
               <a>Item 1</a>
             </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {links?.map((link) => <Link key={link.path} href={link.path}>{link.title}</Link>)}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">Logo</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+        <ul className="menu menu-horizontal px-1 space-x-6">
+        {links?.map((link) => <Link key={link.path} className={`${pathName === link.path && 'text-cyan-300' }`} href={link.path}>{link.title}</Link>)}
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <a onClick={handler} className="btn">Login</a>
       </div>
     </div>
   );
