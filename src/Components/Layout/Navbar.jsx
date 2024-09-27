@@ -23,6 +23,10 @@ const Navbar = () => {
       title: "FAQ",
       path: "/faq",
     },
+    {
+      title: "Blog",
+      path: "/blog",
+    },
   ];
 
   const handler = () => {
