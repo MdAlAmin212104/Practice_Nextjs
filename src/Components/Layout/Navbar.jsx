@@ -33,6 +33,12 @@ const Navbar = () => {
     router.push('/contact')
   } 
 
+  if(pathName.includes('dashboard')){
+    return <div>
+      <h1>Dashboard</h1>
+    </div>
+  }
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start ">
