@@ -1,16 +1,9 @@
 import Link from 'next/link';
 import React from 'react';
-
-
-const getData = async()=> {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-    const posts = await res.json();
-    return posts;
-}
+import { getData } from '../services/postData';
 
 const PostPage = async() => {
     const postData = await getData();
-    console.log(postData);
     return (
         <div className='min-h-screen'>
             <h1 className='text-center text-4xl font-bold'>All Post</h1>
