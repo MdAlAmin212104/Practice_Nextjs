@@ -10,6 +10,14 @@ export async function PATCH(request, {params}){
     })
 }
 
+export async function DELETE(request, {params}){
+    const comment = comments.filter(c => c.id !== parseInt(params.id))
+    return Response.json({
+        massage : 'comments Deleted',
+        comment,
+    })
+}
+
 const comments = [
     {
         id: 1,
